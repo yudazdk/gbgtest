@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2019 at 09:11 AM
+-- Generation Time: Feb 18, 2019 at 01:59 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -23,17 +23,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tasks`
+-- Table structure for table `files`
 --
 
-CREATE TABLE `tasks` (
+CREATE TABLE `files` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `is_completed` tinyint(1) NOT NULL DEFAULT '0',
-  `description` varchar(200) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone_number` varchar(10) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `img_name` varchar(30) NOT NULL,
+  `img_desctiption` varchar(60) NOT NULL,
+  `file_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -41,9 +38,9 @@ CREATE TABLE `tasks` (
 --
 
 --
--- Indexes for table `tasks`
+-- Indexes for table `files`
 --
-ALTER TABLE `tasks`
+ALTER TABLE `files`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -51,9 +48,9 @@ ALTER TABLE `tasks`
 --
 
 --
--- AUTO_INCREMENT for table `tasks`
+-- AUTO_INCREMENT for table `files`
 --
-ALTER TABLE `tasks`
+ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

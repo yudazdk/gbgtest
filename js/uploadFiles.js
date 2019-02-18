@@ -36,10 +36,38 @@ createFormBtn.click(function (e) {
 });
 
 function doUpload() {
-    console.log('do upload');
+    var form_data = new FormData();
+    var num_of_uploaded = $("#num_uploaded_files").val();
+
+    form_data.append("num_of_uploaded", num_of_uploaded);
+
+    for ( let i = 1; i <= 2; i++) {
+        let file_data = $("#file_upload" + i).prop("files")[0];
+
+        form_data.append("file_upload" + i, file_data);
+        form_data.append("img_name" + i, $("#img_name" + i).val());
+        form_data.append("img_description" + i, $("#img_description" + i).val());
+    }
+
+    $.ajax({
+        url: "api/upload.php",
+        data: form_data,
+        type: 'post',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(){
+            console.log('');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            errorMessage = jqXHR.responseText;
+            console.log(errorMessage);
+        }
+    });
 }
 
 function validateForm() {
+    const max_file_size = 200 * 1024;
     var num_of_uploaded = $("#num_uploaded_files").val();
 
     let validInput = true;
@@ -49,10 +77,24 @@ function validateForm() {
 
     for ( i = 1; i <= num_of_uploaded; i++ ) {
         let img_name = $("#img_name" + i);
-        console.log(img_name.val());
 
         if ( !/^[a-zA-Z]+$/.test(img_name.val()) ) {
             errorMsg += '<div class="error-text">Img name ' + i + ' should contain only letters</div>';
+            validInput = false;
+        }
+
+        let fileInput = document.getElementById('file_upload' + i);
+        let filePath = fileInput.value;
+        let allowedExtensions = /(\.jpg)$/i;
+        let file_data = $("#file_upload" + i).prop("files")[0];
+
+        if(!allowedExtensions.exec(filePath)) {
+            errorMsg += '<div class="error-text">Illegal extension for file ' + i + '</div>';
+            validInput = false;
+        }
+
+        if ( file_data.size > max_file_size ) {
+            errorMsg += '<div class="error-text">file ' + i + ' exceeds ' + max_file_size + '</div>';
             validInput = false;
         }
     }
