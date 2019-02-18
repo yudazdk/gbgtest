@@ -12,8 +12,10 @@ function arrangeFiles() {
     files.forEach(function(fileItem, i) {
         var row = '<tr> ';
 
+        console.log(fileItem);
+
         row += '<td><div class="tooltip">' + fileItem.img_name 
-            + '<span class="tooltip-title">' + fileItem.img_description+ '</span></td>'
+            + '<span class="tooltip-title">' + fileItem.img_description + '</span></td>'
             + '</div><td>' +
             '<button class="delete-button" onclick=showDeleteModal(' + fileItem.id + ') '
             + 'id="file_' + fileItem.id + '"'
@@ -54,7 +56,6 @@ function showDeleteModal(id){
 }
 
 function getFiles() {
-    
     $.ajax({
         url: "api/getFiles.php",
         method: "GET"
@@ -71,5 +72,9 @@ $(document).ready(function () {
         modalDelete.style.display = "none";
 
         deleteFile(data_id);
+    });
+
+    $('#delete-cancel').click( function () {
+        modalDelete.style.display = "none";
     });
 });
