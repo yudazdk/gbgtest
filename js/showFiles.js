@@ -39,9 +39,15 @@ $(".close_delete").on('click',  function() {
 
 
 function deleteFile(id) {
-    console.log(id);
+    $.ajax({
+        url: "api/deleteFile.php",
+        method: "post",
+        data: { id: id }
+    }).done(function( response ) {
+        files = JSON.parse(response);
+        arrangeFiles();
+    });
 }
-
 function showDeleteModal(id){
     var id = $("#delete-btn").attr('data-id', id);
     modalDelete.style.display = "block";

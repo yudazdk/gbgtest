@@ -43,7 +43,7 @@ function doUpload() {
 
     form_data.append("num_of_uploaded", num_of_uploaded);
 
-    for ( let i = 1; i <= 2; i++) {
+    for ( let i = 1; i <= num_of_uploaded; i++) {
         let file_data = $("#file_upload" + i).prop("files")[0];
 
         form_data.append("file_upload" + i, file_data);
@@ -59,7 +59,10 @@ function doUpload() {
         cache: false,
         processData: false,
         success: function(){
-            console.log('');
+            $("#wrapper").html('');
+
+            let filesForm = document.getElementById('filesForm');
+            filesForm.style.display = 'none';
         },
         error: function (jqXHR, textStatus, errorThrown) {
             errorMessage = jqXHR.responseText;
