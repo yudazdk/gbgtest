@@ -13,10 +13,14 @@
     <button id="create_form">Create Form files</button>
 </div>
 
-<div id="filesForm">
+<div id="filesForm" style="display: none">
     <form id="myForm" method="post" enctype="multipart/form-data">
     <div id="wrapper" class="form-wrapper">
 
+    </div>
+
+    <div class="btn">
+        <button id="save-btn">Save</button>
     </div>
     </form>
 </div>
@@ -26,6 +30,9 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
+        <div id="error_msg">
+
+        </div>
     </div>
 </div>
 

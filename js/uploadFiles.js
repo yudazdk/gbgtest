@@ -19,8 +19,10 @@ function renderForm() {
         formContent += '</div>';
     }
 
-    formContent += '<button id="save-btn">Save</button>';
     $("#wrapper").html(formContent);
+
+    let filesForm = document.getElementById('filesForm');
+    filesForm.style.display = 'block';
 } 
 
 let createFormBtn = $('#create_form');
@@ -33,10 +35,44 @@ createFormBtn.click(function (e) {
     }
 });
 
+function doUpload() {
+    console.log('do upload');
+}
 
 function validateForm() {
-    
+    var num_of_uploaded = $("#num_uploaded_files").val();
+
+    let validInput = true;
+    $("#error_msg").html('');
+
+    let errorMsg = '';
+
+    for ( i = 1; i <= num_of_uploaded; i++ ) {
+        let img_name = $("#img_name" + i);
+        console.log(img_name.val());
+
+        if ( !/^[a-zA-Z]+$/.test(img_name.val()) ) {
+            errorMsg += '<div class="error-text">Img name ' + i + ' should contain only letters</div>';
+            validInput = false;
+        }
+    }
+
+    $("#error_msg").html(errorMsg);
+
+    return validInput;
 }
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+var spanModal = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+spanModal.onclick = function() {
+    modal.style.display = "none";
+    $("#modal-error-text").text('');
+};
 
 let saveBtn = $('#save-btn');
 saveBtn.click(function (e) {
