@@ -1,0 +1,16 @@
+.form-wrapper {
+    margin-top: 10px;;
+}
+
+.file_details {
+    margin-bottom: 15px;
+}
+
+.error-text {
+    color: red;
+    font-weight: bold;
+}
+
+.success-text {
+    color: dodgerblue;
+}

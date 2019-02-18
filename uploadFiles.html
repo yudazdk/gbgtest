@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Files</title>
+
+    <link rel="stylesheet" href="css/form-wrapper.css">
+</head>
+<body>
+
+<div>
+    <input type="number" id="num_files">
+    <button id="create_form">Create Form files</button>
+</div>
+
+<div id="filesForm">
+    <form id="myForm" method="post" enctype="multipart/form-data">
+    <div id="wrapper" class="form-wrapper">
+
+    </div>
+    </form>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="js/uploadFiles.js"></script>
+</body>
+</html>
