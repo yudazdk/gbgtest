@@ -10,12 +10,14 @@ function renderForm() {
     var formContent = "";
     var numOfFiles = $("#num_files").val();
 
-    formContent += '<input type="hidden" id="num_uploaded_files" name="num_uploaded_files" value="' + numOfFiles + '"/>';
+    formContent += '<div class="form-row">'+
+        '<input type="hidden" id="num_uploaded_files" name="num_uploaded_files" value="' + numOfFiles + '"/></div>';
+
     for (let i = 1; i <= numOfFiles; i++) {
         formContent += '<div class="file_details">';
-        formContent += '<div>image name' + i +': <input type="text" id="img_name' + i + '" name="img_name' + i + '"/></div>';
-        formContent += '<div>image short description' + i +': <input type="text" maxlength="60" id="img_description' + i + '" name="img_description' + i + '"/></div>';
-        formContent += '<div>image file' + i +': <input type="file" id="file_upload' + i + '" name="file_upload' + i + '"/></div>';
+        formContent += '<div class="form-row"><label>image name ' + i +':</label> <input type="text" class="input-style" id="img_name' + i + '" name="img_name' + i + '"/></div>';
+        formContent += '<div class="form-row"><label>image description ' + i +':</label> <input type="text" class="input-style" maxlength="60" id="img_description' + i + '" name="img_description' + i + '"/></div>';
+        formContent += '<div class="form-row"><label>image file ' + i +':</label> <input type="file" id="file_upload' + i + '" name="file_upload' + i + '"/></div>';
         formContent += '</div>';
     }
 
@@ -41,7 +43,7 @@ function doUpload() {
 
     form_data.append("num_of_uploaded", num_of_uploaded);
 
-    for ( let i = 1; i <= num_of_uploaded; i++) {
+    for ( let i = 1; i <= 2; i++) {
         let file_data = $("#file_upload" + i).prop("files")[0];
 
         form_data.append("file_upload" + i, file_data);
@@ -57,10 +59,7 @@ function doUpload() {
         cache: false,
         processData: false,
         success: function(){
-            $("#num_uploaded_files").val('');
-
-            let filesForm = document.getElementById('filesForm');
-            filesForm.style.display = 'block';
+            console.log('');
         },
         error: function (jqXHR, textStatus, errorThrown) {
             errorMessage = jqXHR.responseText;
@@ -70,7 +69,7 @@ function doUpload() {
 }
 
 function validateForm() {
-    const max_file_size = 100 * 1024;
+    const max_file_size = 200 * 1024;
     var num_of_uploaded = $("#num_uploaded_files").val();
 
     let validInput = true;
@@ -89,7 +88,6 @@ function validateForm() {
         let fileInput = document.getElementById('file_upload' + i);
         let filePath = fileInput.value;
         let allowedExtensions = /(\.jpg)$/i;
-
         let file_data = $("#file_upload" + i).prop("files")[0];
 
         if(!allowedExtensions.exec(filePath)) {
