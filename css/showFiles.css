@@ -1,8 +1,18 @@
+
 .first-row {
     background-color: #212121;
     color: white;
 }
-
+table{
+    border-collapse: collapse;
+}
+th{
+    padding: 4px;
+}
+td{
+    padding: 8px;
+    border: 1px solid;
+}
 .modal-confirm {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -28,7 +38,7 @@
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    /* border-bottom: 1px dotted black; */
   }
   
   .tooltip .tooltip-title {
@@ -47,4 +57,12 @@
   
   .tooltip:hover .tooltip-title {
     visibility: visible;
+  }
+
+  .delete-button{
+    background-color: #F44336;
+    border: #F44336;
+    color: white;
+    padding: 7px;
+    border-radius: 8px;
   }
