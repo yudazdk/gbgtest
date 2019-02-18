@@ -48,7 +48,7 @@ for ($index = 1; $index <= $num_of_uploaded; $index++  ) {
 
     $statement = $pdo->prepare('INSERT INTO files (img_name, img_desctiption, file_name) VALUES (:img_name, :img_desctiption, :file_name)');
 
-    $statement->execute(['img_name' => $img_name, 'img_desctiption' => $img_description, 'file_name' => $fileName]);
+    $statement->execute(['img_name' => $img_name, 'img_desctiption' => $img_description, 'file_name' => $_FILES[$fileName]['name']]);
 }
 
 ?>
