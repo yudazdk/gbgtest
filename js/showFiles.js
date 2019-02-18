@@ -31,12 +31,12 @@ function arrangeFiles() {
 var modalDelete = document.getElementById('confirmModal');
 
 // Get the <span> element that closes the modal
-var spanDeleteModal = document.getElementsByClassName("close_delete");
-
 // When the user clicks on <span> (x), close the modal
-spanDeleteModal.onclick = function() {
+
+$(".close_delete").on('click',  function() {
     modalDelete.style.display = "none";
-};
+});
+
 
 function deleteFile(id) {
     console.log(id);
@@ -48,6 +48,7 @@ function showDeleteModal(id){
 }
 
 function getFiles() {
+    
     $.ajax({
         url: "api/getFiles.php",
         method: "GET"
