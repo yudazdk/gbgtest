@@ -12,7 +12,8 @@ function arrangeFiles() {
     files.forEach(function(fileItem, i) {
         var row = '<tr> ';
 
-        row += '<td><div class="tooltip">' + fileItem.img_name + '<span class="tooltip-title">' + fileItem.img_description+ '</span></td>'
+        row += '<td><div class="tooltip">' + fileItem.img_name 
+            + '<span class="tooltip-title">' + fileItem.img_description+ '</span></td>'
             + '</div><td>' +
             '<button class="delete-button" onclick=showDeleteModal(' + fileItem.id + ') '
             + 'id="file_' + fileItem.id + '"'
@@ -30,7 +31,7 @@ function arrangeFiles() {
 var modalDelete = document.getElementById('confirmModal');
 
 // Get the <span> element that closes the modal
-var spanDeleteModal = document.getElementById("close_delete");
+var spanDeleteModal = document.getElementsByClassName("close_delete");
 
 // When the user clicks on <span> (x), close the modal
 spanDeleteModal.onclick = function() {
@@ -47,7 +48,6 @@ function showDeleteModal(id){
 }
 
 function getFiles() {
-
     $.ajax({
         url: "api/getFiles.php",
         method: "GET"
