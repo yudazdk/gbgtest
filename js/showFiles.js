@@ -12,7 +12,7 @@ function arrangeFiles() {
     files.forEach(function(fileItem, i) {
         var row = '<tr> ';
 
-        row += '<td>' + fileItem.img_name + '</td>'
+        row += '<td class="tooltip">' + fileItem.img_name + '<span class="tooltip-title">' + fileItem.img_description+ '</span></td>'
             + '<td>' +
             '<button onclick=showDeleteModal(' + fileItem.id + ') '
             + 'id="file_' + fileItem.id + '"'
@@ -47,6 +47,12 @@ function showDeleteModal(id){
 }
 
 function getFiles() {
+    files=[
+        {id:1,'img_name':'x.png', img_description:'ddddddddddd'}
+    ]
+    arrangeFiles();
+
+    return 
     $.ajax({
         url: "api/getFiles.php",
         method: "GET"
