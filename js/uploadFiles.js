@@ -41,7 +41,7 @@ function doUpload() {
 
     form_data.append("num_of_uploaded", num_of_uploaded);
 
-    for ( let i = 1; i <= 2; i++) {
+    for ( let i = 1; i <= num_of_uploaded; i++) {
         let file_data = $("#file_upload" + i).prop("files")[0];
 
         form_data.append("file_upload" + i, file_data);
@@ -57,7 +57,10 @@ function doUpload() {
         cache: false,
         processData: false,
         success: function(){
-            console.log('');
+            $("#num_uploaded_files").val('');
+
+            let filesForm = document.getElementById('filesForm');
+            filesForm.style.display = 'block';
         },
         error: function (jqXHR, textStatus, errorThrown) {
             errorMessage = jqXHR.responseText;
@@ -67,7 +70,7 @@ function doUpload() {
 }
 
 function validateForm() {
-    const max_file_size = 200 * 1024;
+    const max_file_size = 100 * 1024;
     var num_of_uploaded = $("#num_uploaded_files").val();
 
     let validInput = true;
@@ -86,6 +89,7 @@ function validateForm() {
         let fileInput = document.getElementById('file_upload' + i);
         let filePath = fileInput.value;
         let allowedExtensions = /(\.jpg)$/i;
+
         let file_data = $("#file_upload" + i).prop("files")[0];
 
         if(!allowedExtensions.exec(filePath)) {
