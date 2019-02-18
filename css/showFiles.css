@@ -34,6 +34,8 @@ td{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    max-width: 400px;
+    border-radius: 15px;
 }
 .tooltip {
     position: relative;
@@ -65,4 +67,13 @@ td{
     color: white;
     padding: 7px;
     border-radius: 8px;
+  }
+  #delete-btn{
+      width: 100px;
+      margin: 0 auto;
+  }
+  #delete-cancel{
+    width: 100px;
+    background-color: #BDBDBD;
+    border: #212121;  
   }
