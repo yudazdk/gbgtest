@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="css/form-wrapper.css">
 </head>
 <body>
-
-<div>
+<div id="pageWrapper">
     <input type="number" id="num_files">
-    <button id="create_form">Create Form files</button>
-</div>
+    <button id="create_form" class="button-style">Create files form</button>
 
-<div id="filesForm" style="display: none">
-    <form id="myForm" method="post" enctype="multipart/form-data">
-    <div id="wrapper" class="form-wrapper">
+    <div id="filesForm" style="display: none">
+        <form id="myForm" method="post" enctype="multipart/form-data">
+            <div id="wrapper" class="form-wrapper">
 
+            </div>
+
+            <div class="btn">
+                <button class="button-style" type="submit" id="save-btn">Save</button>
+            </div>
+        </form>
     </div>
-
-    <div class="btn">
-        <button id="save-btn">Save</button>
-    </div>
-    </form>
 </div>
 
 <!-- The Modal -->
